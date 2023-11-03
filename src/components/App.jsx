@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Section from './Section/Section';
+import Statistics from './Statistics/Statistics';
 
 export class App extends Component {
   state = {
@@ -21,6 +22,9 @@ export class App extends Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
     return (
       <>
         <Section title="Please leave feedback">
@@ -33,18 +37,13 @@ export class App extends Component {
           <button type="button" name="bad" onClick={this.leaveFeedback}>
             Bad
           </button>
-          <div>
-            <h2>Statistics</h2>
-            <ul>
-              <li>Good: {this.state.good}</li>
-              <li>Nautral: {this.state.neutral}</li>
-              <li>Bad: {this.state.bad}</li>
-              <li>Total: {this.countTotalFeedback()}</li>
-              <li>
-                Positive feedback: {this.countPositiveFeedbackPercentage()}%
-              </li>
-            </ul>
-          </div>
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={positivePercentage}
+          />
         </Section>
       </>
     );
