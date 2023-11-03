@@ -12,11 +12,13 @@ export class App extends Component {
   };
 
   leaveFeedback = e => {
-    this.setState(state => ({ [e.target.name]: state[e.target.name] + 1 }));
+    const { name } = e.target;
+    this.setState(state => ({ [name]: state[name] + 1 }));
   };
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   };
 
   countPositiveFeedbackPercentage = () => {
