@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 
 export class App extends Component {
   state = {
@@ -28,15 +29,10 @@ export class App extends Component {
     return (
       <>
         <Section title="Please leave feedback">
-          <button type="button" name="good" onClick={this.leaveFeedback}>
-            Good
-          </button>
-          <button type="button" name="neutral" onClick={this.leaveFeedback}>
-            Neutral
-          </button>
-          <button type="button" name="bad" onClick={this.leaveFeedback}>
-            Bad
-          </button>
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.leaveFeedback}
+          />
           <Statistics
             good={good}
             neutral={neutral}
