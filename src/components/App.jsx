@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Section from './Section/Section';
 
 export class App extends Component {
   state = {
@@ -22,8 +23,7 @@ export class App extends Component {
   render() {
     return (
       <>
-        <div>
-          <h2>Please leave feedback</h2>
+        <Section title="Please leave feedback">
           <button type="button" name="good" onClick={this.leaveFeedback}>
             Good
           </button>
@@ -33,19 +33,19 @@ export class App extends Component {
           <button type="button" name="bad" onClick={this.leaveFeedback}>
             Bad
           </button>
-        </div>
-        <div>
-          <h2>Statistics</h2>
-          <ul>
-            <li>Good: {this.state.good}</li>
-            <li>Nautral: {this.state.neutral}</li>
-            <li>Bad: {this.state.bad}</li>
-            <li>Total: {this.countTotalFeedback()}</li>
-            <li>
-              Positive feedback: {this.countPositiveFeedbackPercentage()}%
-            </li>
-          </ul>
-        </div>
+          <div>
+            <h2>Statistics</h2>
+            <ul>
+              <li>Good: {this.state.good}</li>
+              <li>Nautral: {this.state.neutral}</li>
+              <li>Bad: {this.state.bad}</li>
+              <li>Total: {this.countTotalFeedback()}</li>
+              <li>
+                Positive feedback: {this.countPositiveFeedbackPercentage()}%
+              </li>
+            </ul>
+          </div>
+        </Section>
       </>
     );
   }
